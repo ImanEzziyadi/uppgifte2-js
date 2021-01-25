@@ -1,3 +1,12 @@
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
 .todo {
     display: flex;
     justify-content: space-between;
@@ -9,6 +18,29 @@
     margin: 1.5rem 0;
   
   }
+.h5 {
+align-items: center;
+  }
+   .images { 
+         height: 200px ;
+          width: 100% ;
+        display: block;
+        justify-content: center;
+    }
+
+  
+ /* body {  
+  
+     background-image: url(../images/sahra\ \(1\).jpg);
+     background-repeat: no-repeat;
+     background-size: cover;
+     background-position: center center;
+     height: 100vh;
+     
+    }  */
+    /* .navbar {
+           background:rgb(115, 106, 141) ;
+    } */
   .todo:hover {
     box-shadow: 5px 5px 10px 2px #333;
   }
@@ -23,6 +55,66 @@
     flex: 1;
     cursor: pointer;
   }
-  .body {
-    background: gray;
-  }
+  /* .body {
+    background: gray; */
+  /* } */
+  .btn-add {
+    background-color: transparent;
+    border: 1px solid transparent;
+    padding: 0.5rem 1.5rem;
+    cursor: pointer;
+    font-size: 1.1rem;
+
+    transition-property: all;
+    transition-duration: 0.25s;
+    transition-timing-function: ease-in-out;
+}
+.btn-blue {
+    background-color: lightsteelblue;
+    border-color: lightsteelblue;
+    color:#333333;
+    box-shadow: 6px 8px 10px #888888;
+}
+.btn-blue:hover {
+    box-shadow: 3px 1px 5px #888888;
+}
+ @media (min-width: 576px) {
+    .images { 
+        height: 300px ;
+         width: 500 ;
+       display: block;
+       justify-content: center;
+   }
+
+ }
+         /* Medium devices (landscape tablets, 768px and up) */
+@media (min-width: 768px) {
+                .images { 
+                    height:500px;
+                     max-width:900px;
+                   display: block;
+                   justify-content: center;
+               }
+           
+             
+                 } 
+            
+       /* Large devices (laptops/desktops, 992px and up) */
+@media  (min-width: 992px) {
+                .images { 
+                    height:500px;
+                    width: 100%;
+                   display: block;
+                   justify-content: center;
+               }
+           
+             
+                }
+              
+               
+               
+                
+          
+            
+      
+    

@@ -18,18 +18,18 @@ const validate = (id) => {
 }
   
 
-const  getJsonAsync  = async () => {
+ const  getJsonAsync  = async () => {
   let url = 'https://jsonplaceholder.typicode.com/todos';
 
-  const responce = await fetch(url);
-  const _todos = await responce.json();
+  const responce = await fetch(url); 
+ const _todos = await responce.json();
 
   todos = _todos;
-  // console.log(todos);
+  console.log(todos);
 
   listTodos(todos);
-}
-getJsonAsync ();
+ }
+   getJsonAsync ();
 
 const listTodos = (todos) => {
   output.innerHTML = '';
@@ -96,17 +96,30 @@ const newTodo = todo => {
     // }
    
   })
+  const toggleComplete = (id) => {
+    todos.map(todo => {
+        if(todo.id == id){
+            todo.completed = !todo.completed
+        }
+        return todo
+  })
+   listTodos(todos)
+}
+
+const removeTodo = id => {
+todos = todos.filter(todo => todo.id != id);
+listTodos(todos);
+}
   
   output.addEventListener('click', e => {
   
     // console.log(e.target.classList.contains('title'))
+    if (e.target.classList.contains('title'))
+    toggleComplete(e.target.parentNode.id)
   
     if(e.target.classList.contains('btn-danger'))
       removeTodo(e.target.parentNode.id)
-  
-  })
-  
-  const removeTodo = id => {
-    todos = todos.filter(todo => todo.id != id);
-    listTodos(todos);
-  }
+      
+    })
+
+    
