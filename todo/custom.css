@@ -118,9 +118,7 @@ hr {
     flex: 1;
     cursor: pointer;
   }
-  /* .body {
-    background: gray; */
-  /* } */
+  
   .btn-add {
     background-color: transparent;
     border: 1px solid transparent;

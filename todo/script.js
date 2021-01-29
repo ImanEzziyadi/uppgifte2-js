@@ -57,6 +57,8 @@ const newTodo = todo => {
     `
     return model
   }
+  
+  // skapa todo
   const createTodo = async title => {
     let url = 'https://jsonplaceholder.typicode.com/todos';
   
@@ -82,28 +84,28 @@ const newTodo = todo => {
     listTodos(todos);
   }
   
+
   form.addEventListener('submit', e => {
     e.preventDefault();
     if (validate('#input')) {
         createTodo(input.value);
           input.value = ''
     } 
-
-    
-   
-   
   })
+
+
+  // byta komplete
   const toggleComplete = (id) => {
     todos.map(todo => {
         if(todo.id == id){
           todo.completed = todo.completed ? false : true ;
-        
         }   
         return todo
   })
    listTodos(todos)
 }
 
+// delete todo
 const removeTodo = id => {
  document.getElementById('id01').style.display='block'
 todos = todos.filter(todo => todo.id != id);
@@ -111,7 +113,8 @@ console.log(todos);
 listTodos(todos);
 }
   
-  output.addEventListener('click', e => {
+ 
+output.addEventListener('click', e => {
     if (e.target.classList.contains('title'))
     toggleComplete(e.target.parentNode.id)
   
