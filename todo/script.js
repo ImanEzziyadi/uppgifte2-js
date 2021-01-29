@@ -4,6 +4,20 @@ const output = document.querySelector('#output');
 
 let todos = []
 
+// hämta hem 10 todos från databasen till en lista .
+const  getJsonAsync  = async () => {
+  let url = 'https://jsonplaceholder.typicode.com/todos?_start=0&_limit=10' ;
+  const responce = await fetch(url);  
+ const _todos = await responce.json();
+
+  todos = _todos;
+  console.log(todos);
+
+  listTodos(todos);
+ }
+   getJsonAsync ();
+
+// validat data
 const validate = (id) => {
      const input = document.querySelector(id);
      const error = document.querySelector(id + '-error');
@@ -18,19 +32,7 @@ const validate = (id) => {
 }
   
 
- const  getJsonAsync  = async () => {
-  let url = 'https://jsonplaceholder.typicode.com/todos';
-
-  const responce = await fetch(url); 
- const _todos = await responce.json();
-
-  todos = _todos;
-  console.log(todos);
-
-  listTodos(todos);
- }
-   getJsonAsync ();
-
+ 
 const listTodos = (todos) => {
   output.innerHTML = '';
 
@@ -44,13 +46,13 @@ const newTodo = todo => {
     let model = todo.completed ? `
     <div id="${todo.id}" class="todo completed">
       <h3 class="title">${todo.title}</h3>
-      <button class="btn btn-danger">X</button>
+      <button class="btn-danger fas fa-trash"></button>
     </div>
     `
     : `
     <div id="${todo.id}" class="todo">
       <h3 class="title">${todo.title}</h3>
-      <button class="btn btn-danger">X</button>
+      <button class="btn-danger fas fa-trash"></button>
     </div>
     `
     return model
@@ -88,32 +90,28 @@ const newTodo = todo => {
     } 
 
     
-    // if (input.value === '') {
-    //     alert("Pleas input data")
-    // }else {
-    //     createTodo(input.value);
-    //     input.value = '';
-    // }
+   
    
   })
   const toggleComplete = (id) => {
     todos.map(todo => {
         if(todo.id == id){
-            todo.completed = !todo.completed
-        }
+          todo.completed = todo.completed ? false : true ;
+        
+        }   
         return todo
   })
    listTodos(todos)
 }
 
 const removeTodo = id => {
+ document.getElementById('id01').style.display='block'
 todos = todos.filter(todo => todo.id != id);
+console.log(todos);
 listTodos(todos);
 }
   
   output.addEventListener('click', e => {
-  
-    // console.log(e.target.classList.contains('title'))
     if (e.target.classList.contains('title'))
     toggleComplete(e.target.parentNode.id)
   
